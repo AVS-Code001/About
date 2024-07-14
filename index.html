@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About section </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <img src="AVS.png" alt="Logo" class="logo" id="navLogo"> <!-- Replace with your logo image -->
+    </header>
+    <nav class="nav-popup" id="navPopup">
+        <ul>
+            <li class="list active" id="home">
+                <a href="http://localhost:7700/index.html"><span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                  <span class="text">Home</span>
+                </a>
+            </li>
+            <li class="list" id="about">
+                <a href="http://localhost:7700/ABOUT%20SECTION%20/index.html"><span class="icon"><ion-icon name="information-circle-outline"></ion-icon></span>
+                  <span class="text">About</span>
+                </a>
+            </li>
+            <li class="list" id="resume">
+                <a href="http://localhost:7700/Resume%20section%20/index.html"><span class="icon"><ion-icon name="document-text-outline"></ion-icon></span>
+                  <span class="text">Resume</span>
+                </a>
+            </li>
+            <li class="list" id="contact">
+                <a href="http://localhost:7700/Contact%20Section%20/index.html"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                  <span class="text">Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <section class="gallery-container">
+            <div class="gallery">
+                <div class="gallery-item active" id="item1">
+                    <img src="Test 1.jpg" alt="Description 1">
+                    <p class="description">Hi, I'm Aaron. In this image, I'm participating in one of the tasks for my National Certification Level II (NCLL) exam. This was my first time disassembling and assembling a PC. An assessor monitored our work to ensure we followed the instructions correctly so we could pass the NCLL. The first day was challenging, but from the second day to the 15th, we gradually became more confident. When it came time for the practical test, we were all quite nervous, feeling like we had bombs in our hearts that might explode. However, in the end, despite the pressure, we managed to pass the NC2, even though our course was focused on programming and not computer system servicing (CSS).</p>
+                </div>
+                <div class="gallery-item" id="item2">
+                    <img src="Test 2.jpg" alt="Description 2">
+                    <p class="description">Hi, in this image, I'm at my work immersion, serving as an assistant teacher. My role involves helping the Grade 7, 8, 9, and 10 students in the Animation lab. I assist them with their tasks and guide them through the process of taking their exams. It's a rewarding experience to support these students, ensuring they understand the material and can confidently complete their assessments. Being in this position has allowed me to develop my teaching skills and gain valuable insights into the educational process.</p>
+                </div>
+                <div class="gallery-item" id="item3">
+                    <img src="Test 3.jpg" alt="Description 3">
+                    <p class="description">And in this final and most special image, you can see the culmination of all our hard work. This image is incredibly important to me because it was taken on my graduation day. Every effort, every challenge, and every experience we've gone through is represented in this diploma. It symbolizes not only our academic achievements but also the determination and perseverance it took to reach this point. This diploma holds immense value as it marks the successful completion of our journey and the beginning of new opportunities.</p>
+                </div>
+            </div>
+            <button class="prev" onclick="prevImage()">&#10094;</button>
+            <button class="next" onclick="nextImage()">&#10095;</button>
+        </section>
+    </main>
+
+    <script>
+        // Navbar functionality
+        const navLogo = document.getElementById('navLogo');
+        const navPopup = document.getElementById('navPopup');
+
+        navLogo.addEventListener('click', () => {
+            navPopup.classList.toggle('active');
+        });
+
+        const list = document.querySelectorAll('.list');
+
+        function activeLink() {
+            list.forEach((item) => item.classList.remove('active'));
+            this.classList.add('active');
+        }
+        list.forEach((item) => item.addEventListener('click', activeLink));
+
+        // Gallery functionality
+        let currentIndex = 0;
+
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        function updateGallery() {
+            galleryItems.forEach((item, index) => {
+                item.style.display = index === currentIndex ? 'block' : 'none';
+            });
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            updateGallery();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            updateGallery();
+        }
+
+        updateGallery();
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
